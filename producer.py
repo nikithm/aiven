@@ -15,7 +15,7 @@ producer = KafkaProducer(
 )
 
 producer.send("test-topic",
-                key={"key": 1},
-                value={"message": "hello world"}
+                key={"key": 2},
+                value={"message": "hello world 2"}
             )
 producer.flush()
