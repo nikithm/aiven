@@ -16,10 +16,10 @@ producer = KafkaProducer(
 
 while True:
     key = input("Enter Key: ")
-    message = input("Enter Message: ")
+    message = input("Enter Value: ")
     producer.send("test-topic",
                     key={"key": key},
-                    value={"message": message}
+                    value={"value": message}
                 )
     print("Data Sent")
     producer.flush()

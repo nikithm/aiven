@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 import psycopg2
+import json
 
 conn = psycopg2.connect('postgres://avnadmin:d4x37goj4y8m71a1@pg-13e4cc60-nikithbhee-1d6c.aivencloud.com:24570/defaultdb?sslmode=require')
 
@@ -19,6 +20,13 @@ consumer = KafkaConsumer(
 )
 
 for msg in consumer:
-    print("Received:{} = {}".format(msg.key,msg.value))
-    cur.execute('''INSERT INTO happiness ({}, {});'''.format(msg.key,msg.value))
-    print("Added:{} = {} to the Postgres DB".format(msg.key,msg.value))
+	try:
+		print("Received:{} = {}".format(msg.key,msg.value))
+		key = json.loads(msg.key)["key"]
+		value = json.loads(msg.value)["value"]
+		cur.execute("INSERT INTO test (key, value) VALUES ({}, {});".format(key,value))
+		print("Added: key = {} and value = {} to the Postgres DB".format(key,value))
+	except:
+		print("Error")
+		cur.close()
+		conn.close()
