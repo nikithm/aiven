@@ -14,4 +14,4 @@ consumer = KafkaConsumer(
 )
 
 for msg in consumer:
-    print("Received: {}".format(msg.value))
+    print("Received:{} = {}".format(msg.key,msg.value))
