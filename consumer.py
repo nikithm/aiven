@@ -28,5 +28,3 @@ for msg in consumer:
 		print("Added: key = {} and value = {} to the Postgres DB".format(key,value))
 	except:
 		print("Error")
-		cur.close()
-		conn.close()
