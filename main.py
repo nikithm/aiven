@@ -1,9 +1,11 @@
 import json
 from kafka import KafkaProducer
 
-folderName = "~/kafkaCerts/kafka-pizza/"
+v = "data"
+
+folderName = "keys/"
 producer = KafkaProducer(
-    bootstrap_servers="<INSTANCE_NAME>-<PROJECT_NAME>.aivencloud.com:<PORT>",
+    bootstrap_servers="kafka-31ed45d2-nikithbhee-1d6c.aivencloud.com:24572",
     security_protocol="SSL",
     ssl_cafile=folderName+"ca.pem",
     ssl_certfile=folderName+"service.cert",
