@@ -21,6 +21,7 @@ while True:
                     key={"key": key},
                     value={"message": message}
                 )
+    print("Data Sent")
     producer.flush()
     stop = input("Press 0 to stop or press any other key to send messages: ")
     if str(stop)=="0":
