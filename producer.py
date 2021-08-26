@@ -14,8 +14,14 @@ producer = KafkaProducer(
 
 )
 
-producer.send("test-topic",
-                key={"key": 2},
-                value={"message": "hello world 2"}
-            )
-producer.flush()
+while True:
+    key = input("Enter Key: ")
+    message = input("Enter Message: ")
+    producer.send("test-topic",
+                    key={"key": key},
+                    value={"message": message}
+                )
+    producer.flush()
+    stop = input("Press 0 to stop or press any other key to send messages: ")
+    if str(stop)=="0":
+        break
