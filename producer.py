@@ -1,7 +1,6 @@
 import json
 from kafka import KafkaProducer
 
-v = "data"
 
 folderName = "keys/"
 producer = KafkaProducer(
@@ -14,3 +13,9 @@ producer = KafkaProducer(
     key_serializer=lambda v: json.dumps(v).encode('ascii')
 
 )
+
+producer.send("test-topic",
+                key={"key": 1},
+                value={"message": "hello world"}
+            )
+producer.flush()
