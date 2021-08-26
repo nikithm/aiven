@@ -20,11 +20,5 @@ consumer = KafkaConsumer(
 
 for msg in consumer:
     print("Received:{} = {}".format(msg.key,msg.value))
-    cur.execute('''
-	CREATE TABLE test (
-	key VARCHAR(24) NOT NULL,
-	value VARCHAR(24) NOT NULL
-	);''')
-
-	
+    cur.execute('''INSERT INTO happiness ({}, {});'''.format(msg.key,msg.value))
     print("Added:{} = {} to the Postgres DB".format(msg.key,msg.value))
