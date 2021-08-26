@@ -19,3 +19,6 @@ For Consumer you also need to install psycopg2
 
 Use this commad on CLI to install psycopg2:
 pip install psycopg2
+
+
+Note: helper.py file is used to create database schema only ececute it first time 
